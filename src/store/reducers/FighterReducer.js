@@ -1,5 +1,5 @@
-import {SELECT_FIGHTER} from "../actions/types";
-import fighter_data from "../data/fighters";
+import {SELECT_FIGHTER} from "../types/types";
+import fighter_data from "../../data/fighters";
 
 const INITIAL_STATE = {
     fighters: fighter_data,
