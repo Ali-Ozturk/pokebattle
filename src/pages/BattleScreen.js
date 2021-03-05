@@ -3,53 +3,80 @@ import DefaultScreenLayout from "./_layout/DefualtScreenLayout";
 import {Col, Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import SpriteFigure from "../components/SpriteFigure";
+import {setMove, setOpponentFighter} from "../store/actions";
+import ActionList from "../components/ActionList";
+import MoveList from "../components/MoveList";
 
 class BattleScreen extends Component {
+    state = {}
+
+    componentDidMount() {
+        this.props.setOpponentFighter();
+    }
+
     render() {
-        const {selected_fighter, opponents} = this.props;
+        const {opponents, opponent_fighter, selected_fighter, move} = this.props;
 
         return (
             <DefaultScreenLayout>
 
                 {/* Battle Canvas */}
-                <SpriteFigure sprite={opponents[0]} />
+                {opponent_fighter && (
+                    <>Health: {opponent_fighter.current_hp}
+                        {<SpriteFigure sprite={opponent_fighter}/>}</>
+                )}
 
-                {/* Action bar */}
-                <div className={'p-4 bg-dark fixed-bottom'}>
-                    <Row>
-                        <Col className={'text-right'}>
-                            <button className={'btn btn-info my-2 px-5 py-2'}>Abilities</button>
-                        </Col>
-                        <Col className={'text-left'}>
-                            <button className={'btn btn-info my-2 px-5 py-2'}>Abilities</button>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className={'text-right'}>
-                            <button className={'btn btn-info my-2 px-5 py-2'}>Abilities</button>
-                        </Col>
-                        <Col className={'text-left'}>
-                            <button className={'btn btn-info my-2 px-5 py-2'}>Abilities</button>
-                        </Col>
-                    </Row>
+                {selected_fighter && (
+                    <>Health: {selected_fighter.current_hp}
+                        {<SpriteFigure sprite={selected_fighter}/>}</>
+                )}
+
+                <div className={'p-5 bg-dark fixed-bottom'}>
+                    {move !== "select-move" &&
+                    <p className={'cursor-pointer text-white m-0'}
+                       onClick={() => this.props.backToDefaultMove()}>
+                        Go back
+                    </p>}
+
+                    {/* Action bar */}
+                    {move === "select-move" && <ActionList/>}
+
+                    {/* Move bar */}
+                    {move === "select-fighter-move" && <MoveList />}
                 </div>
+
             </DefaultScreenLayout>
         );
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        backToDefaultMove: () => {
+            dispatch(setMove("select-move"));
+        },
+        setOpponentFighter: fighter => {
+            dispatch(setOpponentFighter(fighter));
+        }
+    }
+}
+
+
 const mapStateToProps = ({fighter_selection, battle}) => {
     const {selected_fighter} = fighter_selection;
-    const {opponents} = battle;
+    const {opponents, move, opponent_fighter} = battle;
 
     return {
         selected_fighter,
-        opponents
+        opponents,
+        move,
+        opponent_fighter
     }
 }
 
 export default connect(
     mapStateToProps,
+    mapDispatchToProps
 )(BattleScreen);
 
 

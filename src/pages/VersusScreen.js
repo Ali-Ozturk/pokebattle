@@ -34,7 +34,7 @@ class VersusScreen extends Component {
 
                 <div>
                     {opponents.map((fighter, key) => {
-                        return <SpriteFigure sprite={fighter} keyid={key} className={'m-4 d-inline-block'}/>
+                        return <SpriteFigure sprite={fighter} key={key} className={'m-4 d-inline-block'}/>
                     })}
                 </div>
 

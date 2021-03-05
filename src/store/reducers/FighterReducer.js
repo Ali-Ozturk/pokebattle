@@ -6,12 +6,13 @@ const INITIAL_STATE = {
     selected_fighter: null
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SELECT_FIGHTER:
             return {
                 ...state,
-                selected_fighter: action.fighter
+                selected_fighter: {...action.fighter, current_hp: action.fighter.health}
             };
         default:
             return state;

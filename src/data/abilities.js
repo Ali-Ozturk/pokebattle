@@ -4,7 +4,6 @@ const ability_data = [
         title: "Quick Attack",
         power: 40,
         type: "normal",
-        is_first: true
     },
     {
         id: 2,
