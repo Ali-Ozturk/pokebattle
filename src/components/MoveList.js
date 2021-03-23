@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Col, Row} from "react-bootstrap";
+import {Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import ability_data from "../data/abilities";
 import {getMoveEffectivenessAndDamage} from "../utils/general";
@@ -30,20 +30,18 @@ class MoveList extends Component {
         if (updatedHealth < 1) {
             this.props.removeOpponentFighter(opponent_fighter);
             this.props.changeTurn("player");
-            this.props.backToDefaultMove();
             this.props.setOpponentFighter();
             return 0;
         }
 
         const timer = setTimeout(() => {
             /* The computers actions happens here */
-
-            const randomMove = ability_data[Math.floor(Math.random() * ability_data.length)];
-            const {damage, effectiveness} = getMoveEffectivenessAndDamage(randomMove, selected_fighter);
+            const randomMoveID = opponent_fighter.moves[Math.floor(Math.random() * opponent_fighter.moves.length)];
+            const fetchMove = ability_data.find(ability => ability.id === randomMoveID);
+            const {damage, effectiveness} = getMoveEffectivenessAndDamage(fetchMove, selected_fighter);
             const updatedHealth = selected_fighter.current_hp - damage;
 
             if (updatedHealth < 1) {
-                console.log("Dead!");
                 this.props.removeMyFighter();
             } else {
                 this.props.setMyFighterHealth(updatedHealth);
