@@ -29,7 +29,7 @@ const fighter_data = [
         id: 3,
         label: "Pickles",
         imageUrl: process.env.PUBLIC_URL + '/images/sprites/pickles-sprite.gif',
-        health: 500,
+        health: 100,
         moves: [1, 2, 3, 4],
         type_defenses: {
             normal: 1,

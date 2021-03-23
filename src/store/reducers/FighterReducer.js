@@ -1,4 +1,4 @@
-import {SELECT_FIGHTER} from "../types/types";
+import {REMOVE_MY_FIGHTER, SELECT_FIGHTER, SET_FIGHTER_HEALTH} from "../types/types";
 import fighter_data from "../../data/fighters";
 
 const INITIAL_STATE = {
@@ -14,6 +14,20 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 selected_fighter: {...action.fighter, current_hp: action.fighter.health}
             };
+        case SET_FIGHTER_HEALTH:
+            let updated_fighter = state.selected_fighter;
+
+            updated_fighter.current_hp = action.health;
+
+            return {
+                ...state,
+                selected_fighter: updated_fighter,
+            };
+        case REMOVE_MY_FIGHTER:
+            return {
+                ...state,
+                selected_fighter: {},
+            }
         default:
             return state;
     }

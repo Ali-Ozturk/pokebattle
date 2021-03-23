@@ -1,4 +1,5 @@
 import {
+    CHANGE_TURN,
     REMOVE_FIGHTER_FROM_OPPONENTS,
     SET_MOVE,
     SET_OPPONENT_FIGHTER,
@@ -28,6 +29,9 @@ export default (state = INITIAL_STATE, action) => {
                 newTeamWithHp = [...newTeamWithHp, update(item, {current_hp: {$set: item.health}})];
             })
             return {...state, opponents: newTeamWithHp};
+
+        case CHANGE_TURN:
+            return {...state, turn: action.turn};
 
         case SET_MOVE:
             return {...state, move: action.move};

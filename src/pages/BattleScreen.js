@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import DefaultScreenLayout from "./_layout/DefualtScreenLayout";
-import {Col, Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import SpriteFigure from "../components/SpriteFigure";
 import {setMove, setOpponentFighter} from "../store/actions";
@@ -37,7 +36,7 @@ class BattleScreen extends Component {
 
                 </div>
 
-                {opponents.length > 0 &&
+                {opponents.length > 0 && selected_fighter.current_hp > 1 &&
                 <div className={'p-5 bg-dark fixed-bottom'} id='action_bar'>
                     {move !== "select-move" &&
                     <p className={'cursor-pointer text-white m-0'}
@@ -73,13 +72,14 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = ({fighter_selection, battle}) => {
     const {selected_fighter} = fighter_selection;
-    const {opponents, move, opponent_fighter} = battle;
+    const {opponents, move, opponent_fighter, turn} = battle;
 
     return {
         selected_fighter,
         opponents,
         move,
-        opponent_fighter
+        opponent_fighter,
+        turn
     }
 }
 

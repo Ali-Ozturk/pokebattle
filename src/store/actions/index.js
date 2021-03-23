@@ -1,12 +1,27 @@
 import {
-    REMOVE_FIGHTER_FROM_OPPONENTS,
-    SELECT_FIGHTER,
+    CHANGE_TURN,
+    REMOVE_FIGHTER_FROM_OPPONENTS, REMOVE_MY_FIGHTER,
+    SELECT_FIGHTER, SET_FIGHTER_HEALTH,
     SET_LOADING,
     SET_MOVE,
     SET_OPPONENT_FIGHTER,
     SET_OPPONENT_FIGHTER_HEALTH,
     SET_OPPONENTS
 } from '../types/types';
+
+
+export const setMyFighterHealth = (health) => {
+    return {
+        type: SET_FIGHTER_HEALTH,
+        health
+    }
+}
+
+export const removeMyFighter = () => {
+    return {
+        type: REMOVE_MY_FIGHTER
+    }
+}
 
 export const selectFighter = (fighter) => {
     return {
@@ -33,6 +48,12 @@ export const setMove = move => {
     return {
         type: SET_MOVE,
         move
+    }
+}
+export const setTurn = turn => {
+    return {
+        type: CHANGE_TURN,
+        turn
     }
 }
 export const setOpponentFighter = fighter => {
