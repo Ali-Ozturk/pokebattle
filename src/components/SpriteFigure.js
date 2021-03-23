@@ -5,9 +5,8 @@ class SpriteFigure extends Component {
         const {sprite} = this.props;
 
         return (
-            <figure className={this.props.className} onClick={this.props.onClick}>
-                <img className={this.props.onClick ? 'cursor-pointer' : ''} alt={sprite.label}
-                     src={process.env.PUBLIC_URL + sprite.imageUrl}/>
+            <figure className={this.props.className + ' ' + (this.props.cursor ? 'cursor-pointer' : '')} onClick={this.props.onClick}>
+                <img src={sprite.imageUrl} id={'fighter'} alt={sprite.name}/>
                 <figcaption>{sprite.label}</figcaption>
             </figure>
         );

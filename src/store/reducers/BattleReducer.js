@@ -16,6 +16,7 @@ const INITIAL_STATE = {
     opponents: [],
     move: "select-move",
     opponent_fighter: null,
+    turn: "player" // can be player || computer
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

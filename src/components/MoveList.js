@@ -6,13 +6,17 @@ import {getMoveEffectivenessAndDamage} from "../utils/general";
 import {removeOpponentFighter, setMove, setOpponentFighter, setOpponentFighterHealth} from "../store/actions";
 
 class MoveList extends Component {
+    state = {
+        effectiveness: '',
+    }
 
     handleMoveClicked = move => {
         const {opponent_fighter} = this.props;
-        const {damage} = getMoveEffectivenessAndDamage(move, opponent_fighter);
+        const {damage, effectiveness} = getMoveEffectivenessAndDamage(move, opponent_fighter);
         const updatedHealth = opponent_fighter.current_hp - damage;
 
         this.props.setOpponentFighterHealth(opponent_fighter, updatedHealth);
+        this.setState({effectiveness: effectiveness});
 
         if (updatedHealth < 1) {
             this.props.removeOpponentFighter(opponent_fighter);
@@ -26,6 +30,7 @@ class MoveList extends Component {
 
         return (
             <>
+                <p className={'text-warning'}>{this.state.effectiveness}</p>
                 <Row>
                     {selected_fighter.moves.map(move => {
                         const moveDTO = ability_data.find(e => e.id === move);

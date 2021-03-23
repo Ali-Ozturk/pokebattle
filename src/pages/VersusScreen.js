@@ -38,8 +38,8 @@ class VersusScreen extends Component {
                     })}
                 </div>
 
-                <div>
-                    <h1 className={'text-danger font-bold font-italic'}>VS.</h1>
+                <div className={'versus-gif'}>
+                    <img src={process.env.PUBLIC_URL + '/images/vs.gif'} alt={'VS.'}/>
                 </div>
 
                 <div>
@@ -48,7 +48,9 @@ class VersusScreen extends Component {
 
 
                 <div>
-                    <button type="button" className="btn btn-success font-italic py-3 px-5" onClick={() => this.handleFightButtonClick()}>FIGHT</button>
+                    <button type="button" className="btn btn-success font-italic py-3 px-5"
+                            onClick={() => this.handleFightButtonClick()}>FIGHT
+                    </button>
                 </div>
             </DefaultScreenLayout>
         );

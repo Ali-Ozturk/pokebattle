@@ -2,7 +2,7 @@ const fighter_data = [
     {
         id: 1,
         label: "Ali",
-        imageUrl: '/images/sprites/ali-sprite.png',
+        imageUrl: process.env.PUBLIC_URL + '/images/sprites/ali-sprite.png',
         health: 500,
         moves: [1, 2, 3, 4],
         type_defenses: {
@@ -15,7 +15,7 @@ const fighter_data = [
     {
         id: 2,
         label: "René",
-        imageUrl: '/images/sprites/rene-sprite.png',
+        imageUrl: process.env.PUBLIC_URL + '/images/sprites/rene-sprite.png',
         health: 500,
         moves: [1, 2, 3, 4],
         type_defenses: {
@@ -28,7 +28,7 @@ const fighter_data = [
     {
         id: 3,
         label: "Pickles",
-        imageUrl: '/images/sprites/pickles-sprite.png',
+        imageUrl: process.env.PUBLIC_URL + '/images/sprites/pickles-sprite.gif',
         health: 500,
         moves: [1, 2, 3, 4],
         type_defenses: {
@@ -41,7 +41,7 @@ const fighter_data = [
     {
         id: 4,
         label: "Malte",
-        imageUrl: '/images/sprites/malte-sprite.png',
+        imageUrl: process.env.PUBLIC_URL + '/images/sprites/malte-sprite.gif',
         health: 500,
         moves: [1, 2, 3, 4],
         type_defenses: {
@@ -54,7 +54,7 @@ const fighter_data = [
     {
         id: 5,
         label: "Kenneth",
-        imageUrl: '/images/sprites/kenneth-sprite.png',
+        imageUrl: process.env.PUBLIC_URL + '/images/sprites/kenneth-sprite.png',
         health: 500,
         moves: [1, 2, 3, 4],
         type_defenses: {

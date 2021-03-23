@@ -4,7 +4,7 @@ const effectiveness_chart = {
     "0": "It has no effect.",
     "0.25": "It's not very effective.",
     "0.5": "It's not very effective.",
-    "1": "",
+    "1": "Normal effectiveness",
     "2": "It's super effective.",
     "4": "It's super effective."
 };

@@ -1,13 +1,13 @@
 const ability_data = [
     {
         id: 1,
-        title: "Quick Attack",
+        title: "Klamydia",
         power: 40,
         type: "normal",
     },
     {
         id: 2,
-        title: "Discharge",
+        title: "Kys",
         power: 80,
         type: "electric"
     },

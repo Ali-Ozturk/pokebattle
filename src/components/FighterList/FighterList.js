@@ -23,9 +23,14 @@ class FighterList extends Component {
 
         return (
             <div>
+                <div id="sprite-container">
+                    <div id="sprite-image">
+                    </div>
+                </div>
+
                 {this.props.fighters.map((item, index) => {
                         return (
-                            <SpriteFigure sprite={item} key={index}
+                            <SpriteFigure cursor sprite={item} key={index}
                                           onClick={() => this.handleFighterSelect(item)} className={'m-4 d-inline-block'}/>
                         )
                     }

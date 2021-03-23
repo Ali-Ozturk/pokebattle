@@ -18,20 +18,27 @@ class BattleScreen extends Component {
         const {opponents, opponent_fighter, selected_fighter, move} = this.props;
 
         return (
-            <DefaultScreenLayout>
-
+            <DefaultScreenLayout className={'mt-md-5'}>
                 {/* Battle Canvas */}
-                {opponent_fighter && (
-                    <>Health: {opponent_fighter.current_hp}
-                        {<SpriteFigure sprite={opponent_fighter}/>}</>
-                )}
+                <div id="battle-arena"
+                     className="d-flex align-items-end justify-content-around justify-content-lg-around">
 
-                {selected_fighter && (
-                    <>Health: {selected_fighter.current_hp}
-                        {<SpriteFigure sprite={selected_fighter}/>}</>
-                )}
+                    {selected_fighter && (
+                        <div className={'fighter1 d-inline-block'}><span
+                            className={'shadow px-2 bg-white rounded text-dark'}>Health: {selected_fighter.current_hp}</span>
+                            {<SpriteFigure sprite={selected_fighter}/>}</div>
+                    )}
 
-                <div className={'p-5 bg-dark fixed-bottom'}>
+                    {opponent_fighter && (
+                        <div className={'fighter2 d-inline-block'}><span
+                            className={'shadow px-2 bg-white rounded text-dark'}>Health: {opponent_fighter.current_hp}</span>
+                            {<SpriteFigure sprite={opponent_fighter}/>}</div>
+                    )}
+
+                </div>
+
+                {opponents.length > 0 &&
+                <div className={'p-5 bg-dark fixed-bottom'} id='action_bar'>
                     {move !== "select-move" &&
                     <p className={'cursor-pointer text-white m-0'}
                        onClick={() => this.props.backToDefaultMove()}>
@@ -42,8 +49,10 @@ class BattleScreen extends Component {
                     {move === "select-move" && <ActionList/>}
 
                     {/* Move bar */}
-                    {move === "select-fighter-move" && <MoveList />}
+                    {move === "select-fighter-move" && <MoveList/>}
                 </div>
+                }
+
 
             </DefaultScreenLayout>
         );
